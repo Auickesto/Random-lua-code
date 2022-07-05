@@ -1,0 +1,23 @@
+-- I MADE THIS IN LESS THAN 5 SECONDS DONT CRY ABOUT IT BEING UNSECURE --
+
+script = "print('hi man')"
+
+local characters = {}
+
+for i = 48,  57 do table.insert(characters, string.char(i)) end
+for i = 65,  90 do table.insert(characters, string.char(i)) end
+for i = 97, 122 do table.insert(characters, string.char(i)) end
+
+function string.random(length)
+  math.randomseed(os.time())
+
+  if length > 0 then
+    return string.random(length - 1) .. characters[math.random(1, #characters)]
+  else
+    return ""
+  end
+end
+
+local obfuscateMain = script:gsub(".", function(bb) return "\\" .. bb:byte() end) or script .. "\""
+
+print("local SimpleObf = ".."= 'iiiIIIIiiiiiIIIiiiiiiIIIIIIiiiiiiIIIIIiiiiiiiiIIII'".."local "..string.random(500).."= '"..obfuscateMain.."'")
